@@ -1,0 +1,31 @@
+<body>
+<h2>Add to TODO List</h2>
+<form method="post" action="/new">
+    <p>detail<input type="text" name="text" size="30" placeholder="plz enter text"></p>
+    <p>status
+        <select name="status">
+            <option value="not_executed">Not executed</option>
+            <option value="running">Running</option>
+            <option value="finished">Finished</option>
+        </select>
+    </p>
+    <p><input type="submit" value="Send"></p>
+</form>
+
+<table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
+    <tr>
+        <th bgcolor="#EE0000"><font color="#FFFFFF">Detail</font></th>
+        <th bgcolor="#EE0000"><font color="#FFFFFF">status</font></th>
+        <th bgcolor="#EE0000"><font color="#FFFFFF">action</font></th>
+        <th bgcolor="#EE0000"><font color="#FFFFFF"></font></th>
+    </tr>
+    {{ range .todos }}
+        <tr>
+            <td align="right" nowrap>{{ .Text }}</td>
+            <td valign="top">{{ .Status }}</td>
+            <td valign="top"><a href="/detail/{{.ID}}">edit</a></td>
+            <td valign="top"><a href="/delete_check/{{.ID}}">delete</a></td>
+        </tr>
+    {{end}}
+</table>
+</body>

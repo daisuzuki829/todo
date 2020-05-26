@@ -1,0 +1,29 @@
+<body>
+<h2>TODO</h2>
+
+<p>{{.user.ID}}</p>
+<p>{{.user.Name}}</p>
+<p>{{.user.Age}}</p>
+
+<form method="post" action="/update/{{.todo.ID}}">
+    <p>Detail<input type="text" name="text" size="30" value="{{.todo.Text}}" ></p>
+    <p>Status
+        <select name="status">
+            {{if eq .todo.Status "not_executed"}}
+                <option value="not_executed" selected>Not executed</option>
+                <option value="running">Running</option>
+                <option value="finished">Finished</option>
+            {{else if eq .todo.Status "running"}}
+                <option value="not_executed">Not executed</option>
+                <option value="running" selected>Running</option>
+                <option value="finished">Finished</option>
+            {{else}}
+                <option value="not_executed">Not executed</option>
+                <option value="running">Running</option>
+                <option value="finished" selected>Finished</option>
+            {{end}}
+        </select>
+    </p>
+    <p><input type="submit" value="Send"></p>
+</form>
+</body>

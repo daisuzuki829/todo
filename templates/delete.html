@@ -1,0 +1,14 @@
+<body>
+<h1>Confirm deletion</h1>
+<p>Do you really want to delete this?</p>
+<ul>
+    <li>Detail： {{.todo.Text}}</li>
+    <li>status： {{.todo.Status}}</li>
+    <li>created_at： {{.todo.CreatedAt}}</li>
+</ul>
+
+<form method="post" action="/delete/{{.todo.ID}}">
+    <p><input type="submit" value="delete"></p>
+    <p><a href="/">back</a></p>
+</form>
+</body>
